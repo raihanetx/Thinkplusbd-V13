@@ -392,15 +392,10 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         .category-section-title { font-size: 1.75rem; font-weight: 700; color: var(--text-color); text-align: center; margin-top: 1rem; margin-bottom: 1.5rem; }
         .categories {
             display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             padding-bottom: 1.5rem;
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-        .categories::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, and Opera */
         }
         .category {
             flex: 0 0 calc(100% / 3 - 1rem);
@@ -454,10 +449,17 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             }
         }
         @media (min-width: 769px) {
+            .categories {
+                /* No horizontal scrolling on desktop */
+                overflow-x: hidden;
+                flex-wrap: wrap;
+                justify-content: center; /* Center the cards */
+            }
+
             .category {
-                flex: 0 0 calc(100% / 8 - 1rem);
-                border-radius: 8px;
-                border-width: 2px;
+                flex: 0 0 calc(25% - 1.5rem); /* Four cards per row with gap */
+                max-width: calc(25% - 1.5rem); /* Ensure it doesn't grow */
+                margin: 0.75rem; /* Add margin for balanced spacing */
             }
         }
         .category-name { font-size: 1.1rem; font-weight: 600; color: var(--text-color); line-height: 1.3; margin-bottom: 0.35rem; }
