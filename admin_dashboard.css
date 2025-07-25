@@ -340,6 +340,8 @@ table.orders-table {
     display: flex;
     flex-direction: column;
     transition: all 0.3s ease;
+    width: 100px;
+    height: 100px;
 }
 
 .category-card:hover {
